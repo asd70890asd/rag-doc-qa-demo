@@ -1,6 +1,7 @@
 // Configuration
 const API_BASE = 'http://localhost:8000/api';
 let currentDocId = null;
+let msgSeq = 0;
 
 // DOM Elements
 const fileInput = document.getElementById('file-input');
@@ -131,7 +132,7 @@ async function handleAskQuestion() {
 }
 
 function appendMessage(role, text) {
-    const msgId = 'msg-' + Date.now();
+    const msgId = 'msg-' + Date.now() + '-' + (msgSeq++);
     const div = document.createElement('div');
     div.className = `message ${role}`;
     div.id = msgId;
