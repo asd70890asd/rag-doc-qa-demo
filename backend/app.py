@@ -107,6 +107,10 @@ async def upload_document(file: UploadFile = File(...)):
             "latency_ms": round(latency, 2),
             "message": "Document indexed successfully."
         }
+    except HTTPException:
+        raise
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
