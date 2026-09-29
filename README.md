@@ -30,6 +30,12 @@ The application operates locally without needing external vector databases:
    Note: On the first run, the `sentence-transformers` model will download (approx 90MB). Once loaded, you will see `Model loaded successfully.` in the terminal.
 4. **Open the Frontend**: Simply open the `frontend/index.html` file in your preferred web browser. No local web server is required for the frontend, but you can serve it with `python -m http.server` if you prefer.
 
+## Screenshots
+
+| Upload | Chat with Citations |
+|---|---|
+| ![Upload screen](docs/screenshots/ui-upload.png) | ![Chat with citations](docs/screenshots/ui-chat.png) |
+
 ## Example Demo Script
 
 1. Run the app and open the UI in your browser.
@@ -38,4 +44,4 @@ The application operates locally without needing external vector databases:
 4. View the Extractive answer immediately showing the specific source chunk in yellow.
 5. In the settings panel (sidebar), paste an OpenAI API key.
 6. Ask another question: "Summarize his work experience."
-7. View the Generative response synthezised by the LLM, followed by the specific cited sources underneath.
+7. View the Generative response synthesized by the LLM, followed by the specific cited sources underneath.
