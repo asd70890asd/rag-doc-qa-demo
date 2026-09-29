@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Doc Q&A Demo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="layout">
+        <!-- Sidebar Settings -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>RAG Settings</h2>
+            </div>
+
+            <div class="setting-group">
+                <label for="top_k">Top-K Retrievals: <span id="top_k_val">3</span></label>
+                <input type="range" id="top_k" min="1" max="10" value="3" oninput="document.getElementById('top_k_val').innerText = this.value">
+            </div>
+
+            <div class="setting-group">
+                <label for="min_score">Min Similarity: <span id="min_score_val">0.2</span></label>
+                <input type="range" id="min_score" min="0.0" max="1.0" step="0.05" value="0.2" oninput="document.getElementById('min_score_val').innerText = this.value">
+            </div>
+
+            <div class="setting-group">
+                <label for="api_key">OpenAI API Key (Optional)</label>
+                <input type="password" id="api_key" placeholder="sk-..." autocomplete="off">
+                <small>If left blank, mode defaults to Extractive.</small>
+            </div>
+
+            <div class="metrics-panel">
+                <h3>Metrics</h3>
+                <div class="metric">
+                    <span>Index Latency:</span>
+                    <span id="metric-index-latency">-</span>
+                </div>
+                <div class="metric">
+                    <span>Retrieval Latency:</span>
+                    <span id="metric-retrieval-latency">-</span>
+                </div>
+                <div class="metric">
+                    <span>Chunks Extracted:</span>
+                    <span id="metric-chunks">-</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Upload Area -->
+            <div class="upload-zone" id="upload-zone">
+                <h2>Upload Document</h2>
+                <p>Drag and drop or select a PDF / TXT file</p>
+                <input type="file" id="file-input" accept=".pdf,.txt">
+                <div class="progress-bar-container hidden" id="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <p class="status-msg" id="upload-status"></p>
+            </div>
+
+            <!-- Chat Area -->
+            <div class="chat-container hidden" id="chat-container">
+                <div class="chat-history" id="chat-history">
+                    <!-- Messages will be injected here -->
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="question-input" placeholder="Ask a question about the document..." autocomplete="off" disabled>
+                    <button id="send-btn" disabled>Send</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
